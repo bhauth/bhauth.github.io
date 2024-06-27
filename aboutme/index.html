@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>&#x2600;bhauth</title>
+</head>
+<style>
+	body {margin: 0px;}
+	p.p1 {text-align: center; font: 70.0px Verdana}
+    canvas {position: fixed; width: 100%; height: 100%;}
+	.text a:link {text-decoration: none; color: #FF4000; text-shadow: 2px 2px 0 #000}
+    #text {position: absolute; width: 100%; text-align: center; top: 24%;}
+</style>
+<!--
+Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry.
+-->
+<canvas id="foo"></canvas>
+<script>
+
+var screen_brightness = 235;
+var opacity = 0;
+var pic_opac = 1;
+var width = foo.width = window.innerWidth;
+var height = foo.height = window.innerHeight;
+var letters = Array(256).join(1).split('');
+
+function draw() {
+	opacity = Math.min(1, opacity + 0.0002);
+	foo.getContext('2d').fillStyle='rgba(' + screen_brightness + ',' + screen_brightness + ',' + (screen_brightness + 20) + ',.07)';
+	foo.getContext('2d').fillRect(0,0,width,height);
+	foo.getContext('2d').fillStyle='rgba(20,255,20,' + opacity + ')';
+	letters.map(function(y_pos, index){
+		text = String.fromCharCode(8100+Math.random()*1000);
+		x_pos = index * 10;
+		foo.getContext('2d').fillText(text, x_pos, y_pos);
+		letters[index] = (y_pos > 758 + Math.random() * 1e4) ? 0 : y_pos + 10;
+		});
+	};
+
+function adjust() {
+	screen_brightness = Math.max(0, screen_brightness - 2);
+	opacity = Math.min(1, opacity + 0.004);
+	document.getElementById("formamide").style.opacity = pic_opac.toString();
+	pic_opac = Math.max(0, pic_opac - .02);
+	};
+
+draw();
+
+setInterval(draw, 25);
+setInterval(adjust, 700);
+
+window.onresize = function(){
+	screen_brightness = 235;
+	opacity = 0;
+	pic_opac = 1;
+	document.getElementById("formamide").style.opacity = '1';}
+</script>
+
+<div id="text" class="text">
+<div>
+	<p id="name" class="p1"><b>
+	<p class="p1">
+	<a href="blog/"><img id="formamide" src="/pics/formamide.png"></a>
+</div>
+</div>
+</html>
+<!--
+You cannot have both. A billion years ago fish met under the sea and said, "We are fish, we have all this power, and now it is time to conquer the land". But you cannot conquer the land while remaining fish.
+-->
